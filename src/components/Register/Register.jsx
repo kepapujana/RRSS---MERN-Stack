@@ -4,13 +4,13 @@ import { register } from '../../redux/auth/authSlice';
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    username: '',
+    name: '',
     email: '',
     password: '',
     password2: '',
+    age: '',
   });
-  const { firstName, username, email, password, password2 } = formData;
+  const { name, email, password, password2, age } = formData;
 
   const dispatch = useDispatch();
 
@@ -27,13 +27,7 @@ const Register = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <input
-        type="text"
-        name="firstName"
-        value={firstName}
-        onChange={onChange}
-      />
-      <input type="text" name="username" value={username} onChange={onChange} />
+      <input type="text" name="name" value={name} onChange={onChange} />
       <input type="email" name="email" value={email} onChange={onChange} />
       <input
         type="password"
@@ -47,6 +41,7 @@ const Register = () => {
         value={password2}
         onChange={onChange}
       />
+      <input type="text" name="age" value={age} onChange={onChange} />
       <button type="submit">Register</button>
     </form>
   );
