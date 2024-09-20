@@ -14,47 +14,10 @@ const TheHeader = () => {
             </Link>
           </li>
           <li className="nav-menu-item">
-            <Link to="/products" className="nav-menu-link">
-              Products
+            <Link to="/register" className="nav-menu-link">
+              Register
             </Link>
           </li>
-
-          {token ? (
-            <>
-              <li className="nav-menu-item">
-                <Link to="/profile" className="nav-menu-link">
-                  Profile
-                </Link>
-              </li>
-              <li className="nav-menu-item">
-                <Link
-                  to="/logout"
-                  onClick={logoutUser}
-                  className="nav-menu-link"
-                >
-                  Logout
-                </Link>
-              </li>
-              <li className="nav-menu-item">
-                <Link to="/cart">
-                  <ShoppingCartOutlined />
-                </Link>
-              </li>
-            </>
-          ) : (
-            <>
-              <li className="nav-menu-item">
-                <Link to="/login" className="nav-menu-link">
-                  Login
-                </Link>
-              </li>
-              <li className="nav-menu-item">
-                <Link to="/register" className="nav-menu-link">
-                  Register
-                </Link>
-              </li>
-            </>
-          )}
         </ul>
       </nav>
     </>
