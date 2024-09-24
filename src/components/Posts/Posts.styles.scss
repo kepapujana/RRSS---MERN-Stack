@@ -1,0 +1,14 @@
+.posts{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.post{
+    width: 190px;
+    max-height: 100vh;
+}
+
+.comment{
+    color: rgb(171, 171, 171);
+}

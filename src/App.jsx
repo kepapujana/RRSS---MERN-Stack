@@ -1,7 +1,9 @@
 import HomeView from './components/Home/Home';
 import TheHeader from './components/TheHeader/TheHeader';
-import Login from './components/Login/Login';
 import Register from './components/Register/Register';
+import Login from './components/Login/Login';
+import Profile from './components/Profile/Profile';
+import PostDetail from './components/Posts/PostDetail';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 
@@ -14,6 +16,8 @@ function App() {
           <Route path="/" element={<HomeView />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/post/:id" element={<PostDetail />} />
         </Routes>
       </BrowserRouter>
     </div>
