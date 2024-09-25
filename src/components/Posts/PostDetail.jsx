@@ -15,6 +15,15 @@ const PostDetail = () => {
     <div>
       <h1>PostDetail</h1>
       <p>{post.title}</p>
+      {post.comments.length > 0 ? (
+        post.comments.map((comment) => (
+          <div key={comment._id}>
+            <p className="comment">{comment.comment}</p>
+          </div>
+        ))
+      ) : (
+        <li>There isn't comments in the post</li>
+      )}
     </div>
   );
 };

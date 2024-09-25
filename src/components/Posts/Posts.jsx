@@ -36,15 +36,6 @@ const Posts = () => {
                   <p>
                     <b>@{post.username}</b> {post.body}
                   </p>
-                  {post.comments.length > 0 ? (
-                    post.comments.map((comment) => (
-                      <div key={comment._id}>
-                        <p className="comment">{comment.comment}</p>
-                      </div>
-                    ))
-                  ) : (
-                    <li>There isn't comments in the post</li>
-                  )}
                 </Card>
               </Link>
             </div>
