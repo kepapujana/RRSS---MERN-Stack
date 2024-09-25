@@ -25,26 +25,28 @@ const Posts = () => {
         ? 'Cargando...'
         : posts.map((post, index) => (
             <div key={post._id}>
-              <Card className="post">
-                <Link to={`/post/${post._id}`}>Post nº {index + 1}</Link>
-                <img
-                  src={`http://localhost:3001/${post.post_img}`}
-                  alt=""
-                  width="300px"
-                />
-                <p>
-                  <b>@{post.username}</b> {post.body}
-                </p>
-                {post.comments.length > 0 ? (
-                  post.comments.map((comment) => (
-                    <div key={comment._id}>
-                      <p className="comment">{comment.comment}</p>
-                    </div>
-                  ))
-                ) : (
-                  <li>There isn't comments in the post</li>
-                )}
-              </Card>
+              <Link to={`/post/${post._id}`}>
+                <Card className="post">
+                  Post nº {index + 1}
+                  <img
+                    src={`http://localhost:3001/${post.post_img}`}
+                    alt=""
+                    width="300px"
+                  />
+                  <p>
+                    <b>@{post.username}</b> {post.body}
+                  </p>
+                  {post.comments.length > 0 ? (
+                    post.comments.map((comment) => (
+                      <div key={comment._id}>
+                        <p className="comment">{comment.comment}</p>
+                      </div>
+                    ))
+                  ) : (
+                    <li>There isn't comments in the post</li>
+                  )}
+                </Card>
+              </Link>
             </div>
           ))}
     </div>
