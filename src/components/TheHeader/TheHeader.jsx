@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../redux/auth/authSlice';
@@ -8,6 +8,15 @@ const TheHeader = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
+  const [text, setText] = useState('');
+
+  const handleChange = (e) => {
+    setText(e.target.value);
+    if (e.key === 'Enter') {
+      console.log(text);
+      navigate(`/search/${text}`);
+    }
+  };
 
   const onLogout = (e) => {
     e.preventDefault();
@@ -33,6 +42,14 @@ const TheHeader = () => {
                 <Link to="/profile" className="nav-menu-link">
                   Profile
                 </Link>
+              </li>
+              <li className="nav-menu-item">
+                <Link to="/">Home </Link>
+                <input
+                  onKeyUp={handleChange}
+                  placeholder="search post"
+                  name="text"
+                />
               </li>
               <li className="nav-menu-item">
                 <Link className="nav-menu-link" onClick={onLogout}>

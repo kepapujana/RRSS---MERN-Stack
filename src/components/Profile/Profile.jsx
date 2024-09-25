@@ -1,9 +1,8 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { getPostByName } from '../../redux/posts/postsSlice';
 import { Card } from 'antd';
 
 const Profile = () => {
-  // const { user } = useSelector((state) => state.postUser);
-
   return (
     <div className="posts">
       {/* {user.map((post, index) => (
