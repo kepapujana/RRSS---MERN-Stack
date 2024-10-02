@@ -5,7 +5,6 @@ const initialState = {
   posts: [],
   isLoading: false,
   post: [],
-  postsUser: [],
 };
 
 export const getPosts = createAsyncThunk('posts', async (user) => {
@@ -24,11 +23,22 @@ export const getById = createAsyncThunk('posts/getById', async (id) => {
   }
 });
 
-export const getPostByName = createAsyncThunk(
+export const getPostsUsername = createAsyncThunk(
   'posts/username',
-  async (user) => {
+  async (username) => {
     try {
-      return await postsService.getPostByName(user);
+      return await postsService.getPostsUsername(username);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);
+
+export const getPostByName = createAsyncThunk(
+  'posts/getPostByName',
+  async (postName) => {
+    try {
+      return await postsService.getPostByName(postName);
     } catch (error) {
       console.error(error);
     }
@@ -54,8 +64,11 @@ export const postsSlice = createSlice({
       .addCase(getById.fulfilled, (state, action) => {
         state.post = action.payload;
       })
+      .addCase(getPostsUsername.fulfilled, (state, action) => {
+        state.posts = action.payload;
+      })
       .addCase(getPostByName.fulfilled, (state, action) => {
-        state.postsUser = action.payload;
+        state.posts = action.payload;
       });
   },
 });

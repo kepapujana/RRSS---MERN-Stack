@@ -15,7 +15,7 @@ const PostDetail = () => {
     <div>
       <h1>PostDetail</h1>
       <p>{post.title}</p>
-      {post.comments.length > 0 ? (
+      {post.comments && post.comments.length > 0 ? (
         post.comments.map((comment) => (
           <div key={comment._id}>
             <p className="comment">{comment.comment}</p>

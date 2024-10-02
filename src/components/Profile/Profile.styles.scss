@@ -1,10 +1,13 @@
 .postsProfile{
     display: flex;
     justify-content: center;
+    
     flex-wrap: wrap;
 }
 
 .post{
     width: 190px;
-    max-height: 100vh;
+    height: 190px;
+display: flex;
+align-content: center;
 }

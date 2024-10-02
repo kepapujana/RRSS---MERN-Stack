@@ -13,12 +13,19 @@ const getById = async (id) => {
   return res.data;
 };
 
-const getPostByName = async () => {
-  const res = await axios.get(API_URL + '/posts/username');
+const getPostsUsername = async (username) => {
+  const res = await axios.get(`${API_URL}/posts/username/${username}`);
   //para traer solo los datos del post, y no los estados...
-  return res.data.posts;
+  console.log(res.data);
+  return res.data;
 };
 
-const postsService = { getAll, getById, getPostByName };
+const getPostByName = async (postName) => {
+  const res = await axios.get(`${API_URL}/posts/username/${postName}`);
+  console.log(res.data);
+  return res.data;
+};
+
+const postsService = { getAll, getById, getPostByName, getPostsUsername };
 
 export default postsService;

@@ -1,12 +1,15 @@
 .posts{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    // display: flex;
+    // justify-content: center;
+    // flex-wrap: wrap;
 }
 
-.post{
-    width: 190px;
-    max-height: 100vh;
+.postHome{
+    margin-bottom: 6px;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .comment{

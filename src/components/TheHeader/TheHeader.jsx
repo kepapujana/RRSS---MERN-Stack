@@ -2,19 +2,23 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../redux/auth/authSlice';
+import { Input } from 'antd';
 import './TheHeader.styles.scss';
 
 const TheHeader = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
-  const [text, setText] = useState('');
+  const [postName, setPostName] = useState('');
+  const { Search } = Input;
 
-  const handleChange = (e) => {
-    setText(e.target.value);
+  const handleChange = (value, e) => {
+    console.log(e);
+    setPostName(value);
+    console.log('PATATA: ', postName);
+    navigate(`/search/${postName}`);
     if (e.key === 'Enter') {
-      console.log(text);
-      navigate(`/search/${text}`);
+      navigate(`/search/${postName}`);
     }
   };
 
@@ -28,28 +32,26 @@ const TheHeader = () => {
 
   return (
     <>
-      <nav>
+      <nav className="navbar">
         <ul className="nav-menu">
           <li className="nav-menu-item">
             <Link to="/" className="nav-menu-link">
               Home
             </Link>
+            <Search
+              className="inputSearch"
+              placeholder="search post"
+              name="text"
+              onSearch={handleChange}
+            />
           </li>
 
           {user ? (
             <>
               <li className="nav-menu-item">
-                <Link to="/profile" className="nav-menu-link">
+                <Link to={`/profile/${user.name}`} className="nav-menu-link">
                   Profile
                 </Link>
-              </li>
-              <li className="nav-menu-item">
-                <Link to="/">Home </Link>
-                <input
-                  onKeyUp={handleChange}
-                  placeholder="search post"
-                  name="text"
-                />
               </li>
               <li className="nav-menu-item">
                 <Link className="nav-menu-link" onClick={onLogout}>

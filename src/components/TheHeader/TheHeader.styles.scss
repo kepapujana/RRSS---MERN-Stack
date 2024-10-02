@@ -1,11 +1,18 @@
+.navbar{
+    width:100%;
+    margin-bottom: 20px;
+}
+
 .nav-menu{
     display: flex;
+    flex-wrap: wrap;
     padding: 0;
 }
 
 .nav-menu-item{
     list-style-type: none;
     margin-right: 20px;
+    display: flex;
 }
 
 .nav-menu-link{
@@ -13,4 +20,9 @@
     color: black;
     font-weight: bolder;
     font-size: 20px;
+}
+
+.inputSearch{
+    margin-left: 22px;
+    width: 200;
 }

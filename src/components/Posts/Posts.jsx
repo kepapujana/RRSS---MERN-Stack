@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getPosts, reset } from '../../redux/posts/postsSlice';
+import AddBook from './AddPosts';
+import Post from './Post';
 import { Link } from 'react-router-dom';
-import { Card } from 'antd';
 import './Posts.styles.scss';
 
 const Posts = () => {
   const { posts } = useSelector((state) => state.posts);
   const { isLoading } = useSelector((state) => state.posts);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,27 +20,26 @@ const Posts = () => {
   }, [dispatch]);
 
   return (
-    <div className="posts">
-      {isLoading
-        ? 'Cargando...'
-        : posts.map((post, index) => (
-            <div key={post._id}>
+    <>
+      <div className="addPost">
+        <AddBook />
+      </div>
+      <div className="posts">
+        {isLoading
+          ? 'Cargando...'
+          : posts &&
+            posts.map((post, index) => (
               <Link to={`/post/${post._id}`}>
-                <Card className="post">
-                  Post nº {index + 1}
-                  <img
-                    src={`http://localhost:3001/${post.post_img}`}
-                    alt=""
-                    width="300px"
-                  />
-                  <p>
-                    <b>@{post.username}</b> {post.body}
-                  </p>
-                </Card>
+                <Post
+                  key={post._id}
+                  index={index}
+                  username={post.username}
+                  body={post.body}
+                />
               </Link>
-            </div>
-          ))}
-    </div>
+            ))}
+      </div>
+    </>
   );
 };
 
